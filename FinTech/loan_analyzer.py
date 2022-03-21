@@ -1,4 +1,4 @@
-# coding: utf-8
+#coding: utf-8
 import csv
 from lzma import PRESET_EXTREME
 from pathlib import Path
@@ -108,18 +108,24 @@ new_loan = {
     "repayment_interval": "bullet",
     "future_value": 1000,
 }
-
 # @TODO: Define a new function that will be used to calculate present value.
 #    This function should include parameters for `future_value`, `remaining_months`, and the `annual_discount_rate`
 #    The function should return the `present_value` for the loan.
-# YOUR CODE HERE!
+def pv_func(future_value, remaining_months, annual_discount_rate):
+    present_value_new_loan = future_value / (1 + (annual_discount_rate)) ** remaining_months
+    return present_value_new_loan
+
 
 
 # @TODO: Use the function to calculate the present value of the new loan given below.
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
-# YOUR CODE HERE!
-print(f"The present value of the loan is: {present_value}")
 
+future_value = new_loan.get("future_value")
+remaining_months = new_loan.get("remaining_months")
+annual_discount_rate = .2
+
+present_value_new_loan = pv_func(future_value, remaining_months, annual_discount_rate)
+##print(f"The present value of the new loan is: ${present_value_new_loan: .2f}")
 
 """Part 4: Conditionally filter lists of loans.
 
