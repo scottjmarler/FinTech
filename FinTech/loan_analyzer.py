@@ -19,17 +19,17 @@ loan_costs = [500, 600, 200, 1000, 450]
 # @TODO: Use the `len` function to calculate the total number of loans in the list.
 # Print the number of loans from the list
 # YOUR CODE HERE!
-print(f"The total number of loans in the list is: {len(loan_costs)}")
+print(f"The total number of loans in the list is: {len(loan_costs)}\n")
 
 # What is the total of all loans?
 # @TODO: Use the `sum` function to calculate the total of all loans in the list.
 # Print the total value of the loans
-print(f"The total of all loans in the list is: ${sum(loan_costs): .2f}")
+print(f"The total of all loans in the list is: ${sum(loan_costs): .2f}\n")
 
 # What is the average loan amount from the list?
 # @TODO: Using the sum of all loans and the total number of loans, calculate the average loan price.
 # Print the average loan amount
-print(f"The average loan amount is: ${(sum(loan_costs)) / (len(loan_costs)): .2f}")
+print(f"The average loan amount is: ${(sum(loan_costs)) / (len(loan_costs)): .2f}\n")
 
 """Part 2: Analyze Loan Data.
 
@@ -67,8 +67,8 @@ loan = {
 # Print each variable.
 future_value = loan.get("future_value")
 remaining_months = loan.get("remaining_months")
-print(f"The future value of the loan is: ${future_value: .2f}")
-print(f"The loan has {remaining_months} months remaining.")
+print(f"The future value of the loan is: ${future_value: .2f}\n")
+print(f"The loan has {remaining_months} months remaining.\n")
 
 
 # @TODO: Use the formula for Present Value to calculate a "fair value" of the loan.
@@ -86,9 +86,9 @@ fair_value = future_value / (1 + (discount_rate/12)) ** remaining_months
 loan_price = loan.get("loan_price")
 
 if fair_value >= loan_price:
-    print(f"The loan is worth at least the cost to buy it.")
+    print(f"The loan is worth at least the cost to buy it.\n")
 else:
-    print(f"The loan is too expensive and not worth the price.")
+    print(f"The loan is too expensive and not worth the price.\n")
 
 """Part 3: Perform Financial Calculations.
 
@@ -125,7 +125,7 @@ remaining_months = new_loan.get("remaining_months")
 annual_discount_rate = .2
 
 present_value_new_loan = pv_func(future_value, remaining_months, annual_discount_rate)
-##print(f"The present value of the new loan is: ${present_value_new_loan: .2f}")
+print(f"The present value of the new loan is: ${present_value_new_loan: .2f}\n") 
 
 """Part 4: Conditionally filter lists of loans.
 
@@ -166,13 +166,20 @@ loans = [
 ]
 
 # @TODO: Create an empty list called `inexpensive_loans`
-# YOUR CODE HERE!
+inexpensive_loans = []
+
 
 # @TODO: Loop through all the loans and append any that cost $500 or less to the `inexpensive_loans` list
-# YOUR CODE HERE!
+
+for cost in loans:
+    price = cost["loan_price"]
+    if price <= 500:
+        inexpensive_loans.append(price)
+
+
 
 # @TODO: Print the `inexpensive_loans` list
-# YOUR CODE HERE!
+print(f"The list of inexpensive loans is as follows: {inexpensive_loans}\n")
 
 
 """Part 5: Save the results.
