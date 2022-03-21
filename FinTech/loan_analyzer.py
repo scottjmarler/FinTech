@@ -19,17 +19,17 @@ loan_costs = [500, 600, 200, 1000, 450]
 # @TODO: Use the `len` function to calculate the total number of loans in the list.
 # Print the number of loans from the list
 # YOUR CODE HERE!
-print(f"The total number of loans in the list is: {len(loan_costs)}\n")
+print(f"\nThe total number of loans in the list is: {len(loan_costs)}\n")
 
 # What is the total of all loans?
 # @TODO: Use the `sum` function to calculate the total of all loans in the list.
 # Print the total value of the loans
-print(f"The total of all loans in the list is: ${sum(loan_costs): .2f}\n")
+print(f"The sum of all loans in the list is: ${sum(loan_costs): .2f}\n")
 
 # What is the average loan amount from the list?
 # @TODO: Using the sum of all loans and the total number of loans, calculate the average loan price.
 # Print the average loan amount
-print(f"The average loan amount is: ${(sum(loan_costs)) / (len(loan_costs)): .2f}\n")
+print(f"The average loan price is: ${(sum(loan_costs)) / (len(loan_costs)): .2f}\n")
 
 """Part 2: Analyze Loan Data.
 
@@ -86,9 +86,9 @@ fair_value = future_value / (1 + (discount_rate/12)) ** remaining_months
 loan_price = loan.get("loan_price")
 
 if fair_value >= loan_price:
-    print(f"The loan is worth at least the cost to buy it.\n")
+    print(f"The loan is worth at least the cost to buy @ ${fair_value: .2f}.\n")
 else:
-    print(f"The loan is too expensive and not worth the price.\n")
+    print(f"The loan is too expensive and not worth ${fair_value: .2f}.\n")
 
 """Part 3: Perform Financial Calculations.
 
@@ -173,9 +173,8 @@ loans = [
 inexpensive_loans = []
 
 for cost in loans:
-    price = cost["loan_price"]
-    if price <= 500:
-        inexpensive_loans.append(price)
+    if cost["loan_price"] <= 500:
+        inexpensive_loans.append(cost)
 
 print(f"The list of inexpensive loans is as follows: {inexpensive_loans}\n")
 
@@ -205,5 +204,5 @@ output_path = Path("inexpensive_loans.csv")
 with open(output_path, 'w', newline='') as csvfile:
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(header)
-    for row in inexpensive_loans:
-        csvwriter.writerow(inexpensive_loans)
+    for item in inexpensive_loans:
+        csvwriter.writerow(item.values())
